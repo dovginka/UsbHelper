@@ -1,0 +1,51 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to
+         dismiss it. -->
+    <!-- NOTE: ListPreference's summary should be set to its value by the activity code. -->
+    <ListPreference
+        android:entries="@array/name"
+        android:entryValues="@array/name"
+        android:key="name"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="选择串口号"/>
+
+
+    <ListPreference
+        android:defaultValue="115200"
+        android:entries="@array/braunte"
+        android:entryValues="@array/braunte"
+        android:key="braunte"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="波特率"/>
+
+    <ListPreference
+        android:defaultValue="8"
+        android:entries="@array/data"
+        android:entryValues="@array/data"
+        android:key="data"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="数据位"/>
+
+    <ListPreference
+        android:defaultValue="1"
+        android:entries="@array/stop"
+        android:entryValues="@array/stop"
+        android:key="stop"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="停止位"/>
+
+    <ListPreference
+        android:defaultValue="0"
+        android:entries="@array/parity"
+        android:entryValues="@array/parity"
+        android:key="parity"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="奇偶位"/>
+
+</PreferenceScreen>
