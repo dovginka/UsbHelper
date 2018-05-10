@@ -24,7 +24,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-
+//java.lang.UnsatisfiedLinkError: dlopen failed: /data/app/com.shizhi.usp-1/lib/arm/libserial_port.so: has text relocations
     @BindView(R.id.fl_container)
     FrameLayout mContainer;
     private FragmentManager mFragmentManager;
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity
         mFragmentManager = getSupportFragmentManager();
 
 
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+       /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

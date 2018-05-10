@@ -61,7 +61,7 @@ public class UsbTestFra extends BaseSerialFra {
                             try {
                                 UsbDeviceConnection usbDeviceConnection = mUsbManager.openDevice(device);
                                 usbSerialDevice = UsbSerialDevice.createUsbSerialDevice(device, usbDeviceConnection);
-                                if (usbSerialDevice.open()) {
+                                if (usbSerialDevice != null && usbSerialDevice.open()) {
                                     usbSerialDevice.setBaudRate(Integer.valueOf(port[1]));
                                     usbSerialDevice.setDataBits(Integer.valueOf(port[2]));
                                     usbSerialDevice.setStopBits(Integer.valueOf(port[3]));

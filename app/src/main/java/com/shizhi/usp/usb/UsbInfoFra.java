@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -83,6 +84,20 @@ public class UsbInfoFra extends Fragment {
                 if (mContext == null) return;
                 String[] strings1 = strings.toArray(new String[]{});
                 mListView.setAdapter(new ArrayAdapter<>(mContext, android.R.layout.simple_list_item_1, strings1));
+                if (mListView.getHeaderViewsCount() == 0 && strings1.length > 0) {
+                    Button refresh = new Button(mContext);
+                    refresh.setText("刷新");
+                    refresh.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            refresh();
+                        }
+                    });
+                    ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    refresh.setLayoutParams(lp);
+                    mListView.addHeaderView(refresh);
+                }
+
             }
         });
     }

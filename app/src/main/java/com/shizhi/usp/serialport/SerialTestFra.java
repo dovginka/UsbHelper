@@ -2,16 +2,15 @@
 package com.shizhi.usp.serialport;
 
 import android.os.AsyncTask;
+import android.serialport.SerialIoManager;
+import android.serialport.hex.HexData;
+import android.serialport.utils.SerialUtil;
 import android.support.v4.os.AsyncTaskCompat;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.shizhi.usp.base.BaseSerialFra;
-
-import android_serialport_api.SerialIoManager;
-import android_serialport_api.hex.HexData;
-import android_serialport_api.utils.SerialUtil;
 
 /**
  * @author Created by Administrator on  2018-01-15
@@ -20,7 +19,7 @@ import android_serialport_api.utils.SerialUtil;
 
 public class SerialTestFra extends BaseSerialFra {
 
-    SerialUtil mSerialUtil;
+    SerialUtil      mSerialUtil;
     SerialIoManager ioManager;
     private static final String TAG = "SerialTestFra";
 
@@ -92,7 +91,7 @@ public class SerialTestFra extends BaseSerialFra {
             ioManager = null;
         }
         if (mSerialUtil != null) {
-            mSerialUtil.closeSerialport();
+            mSerialUtil.closeSerialPort();
             mSerialUtil = null;
         }
     }

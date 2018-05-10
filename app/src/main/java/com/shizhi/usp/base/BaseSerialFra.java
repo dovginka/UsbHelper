@@ -23,7 +23,11 @@ import android.widget.ToggleButton;
 
 import com.felhr.utils.HexData;
 import com.shizhi.usp.R;
+import com.shizhi.usp.serialport.SerialTestFra;
 import com.shizhi.usp.setting.SettingsActivity;
+import com.shizhi.usp.usb.UsbTestFra;
+
+import java.util.Arrays;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,20 +44,20 @@ public abstract class BaseSerialFra extends Fragment implements SerialListener {
     @BindView(R.id.open)
     ToggleButton mOpen;
     @BindView(R.id.send_info)
-    EditText mSendInfo;
+    EditText     mSendInfo;
     @BindView(R.id.send)
-    Button mSend;
+    Button       mSend;
     @BindView(R.id.send_type)
     ToggleButton mSendType;
     @BindView(R.id.clear_info)
-    Button mClearInfo;
+    Button       mClearInfo;
     @BindView(R.id.settings)
-    Button mSettings;
+    Button       mSettings;
     @BindView(R.id.receiver_info)
-    TextView mReceiverInfo;
+    TextView     mReceiverInfo;
 
-    public UsbManager mUsbManager;
-    private Unbinder unbinder;
+    public  UsbManager mUsbManager;
+    private Unbinder   unbinder;
     private boolean isHex = true;
     public Activity mActivity;
 
@@ -94,11 +98,13 @@ public abstract class BaseSerialFra extends Fragment implements SerialListener {
             }
         });
 
-        /*if (this instanceof UsbTestFra) {
+        if (this instanceof UsbTestFra) {
             mSendInfo.setText("555500000003010301");
         } else if (this instanceof SerialTestFra) {
-            mSendInfo.setText("FE0D001001070000000101000128FF");
-        }*/
+//            mSendInfo.setText("FE0D001001070000000101000128FF");
+            //LED
+            mSendInfo.setText("5AA500325201010000000001121231080808001CB0AEC9FABBEEB0AEC0ADB7BCA3ACC5C2C9CFBBF0BAC8CDF5C0CFBCAA4FB8");
+        }
     }
 
 
@@ -169,7 +175,9 @@ public abstract class BaseSerialFra extends Fragment implements SerialListener {
         parity = Integer.valueOf(sharedPreferences.getString("parity", "-1"));
         Log.d(TAG, String.format("info: name:%s braunter:%s data:%s stop:%s parity:%s", name, braunter, data, stop, parity));
         if (!TextUtils.isEmpty(name) || braunter != -1 || data != -1 || stop != -1 || parity != -1) {
-            return new String[]{name, String.valueOf(braunter), String.valueOf(data), String.valueOf(stop), String.valueOf(parity)};
+            String[] strings = {name, String.valueOf(braunter), String.valueOf(data), String.valueOf(stop), String.valueOf(parity)};
+            Log.d(TAG, "getSerialPort: " + Arrays.toString(strings));
+            return strings;
         }
         return null;
     }
